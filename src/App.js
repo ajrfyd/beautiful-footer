@@ -8,10 +8,10 @@ const App = () => {
   return (
     <Footer>
       <Waves>
-        <div className="wave1"></div>
-        <div className="wave2"></div>
-        <div className="wave3"></div>
-        <div className="wave4"></div>
+        <div className="wave wave1"></div>
+        <div className="wave wave2"></div>
+        <div className="wave wave3"></div>
+        <div className="wave wave4"></div>
       </Waves>
       <Ul>
         <Li><a href="#"><BsFacebook /></a></Li>
@@ -40,6 +40,15 @@ const animateWave = keyframes`
 
   100% {
     background-position-x: 0;
+  }
+`
+const animateWave1 = keyframes`
+  0% {
+    background-position-x: 0;
+  }
+
+  100% {
+    background-position-x: 1000px;
   }
 `
 
@@ -106,27 +115,42 @@ const Li = styled.li`
 `
 
 const Waves = styled.div`
-  position: absolute;
-  top: -100px;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: #f00 url(${wave});
-  background-size: 1000px 100px;
-  
+  & .wave {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url(${wave});
+    background-size: 1000px 100px;
+  }
+
   .wave1 {
     z-index: 1000;
     opacity: 1;
     bottom: 0;
-    animation-name: ${animateWave};
-    animation-duration: 4s;
+    animation: ${animateWave} 4s linear infinite;
   }
 
   .wave2 {
     z-index: 999;
     opacity: .5;
     bottom: 10px;
-    animation: ${animateWave} 4s linear infinite;
+    animation: ${animateWave1} 4s linear infinite;
+  }
+
+  .wave3 {
+    z-index: 1000;
+    opacity: .2;
+    bottom: 15px;
+    animation: ${animateWave} 3s linear infinite;
+  }
+
+  .wave4 {
+    z-index: 999;
+    opacity: .7;
+    bottom: 20px;
+    animation: ${animateWave1} 3s linear infinite;
   }
 `
 
